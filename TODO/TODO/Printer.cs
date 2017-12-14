@@ -31,7 +31,7 @@ namespace TODO
             string[] list = File.ReadAllLines(Filename);
             if (list.Length == 0)
             {
-                Console.WriteLine($"No todos for today! :)");
+                Console.WriteLine("No todos for today! :)");
             }
             else
             {

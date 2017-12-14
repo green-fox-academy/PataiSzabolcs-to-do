@@ -1,1 +1,4 @@
 new task
+new task2
+new task3
+[x] new task4

@@ -29,6 +29,12 @@ namespace TODO
                 FileHandler handler = new FileHandler();
                 handler.AddTask(args[1]);
             }
+            if (args[0] == "-c")
+            {
+                int input = int.Parse(args[1]);
+                FileHandler handler = new FileHandler();
+                handler.CheckTask(input - 1);
+            }
         }
     }
 }
