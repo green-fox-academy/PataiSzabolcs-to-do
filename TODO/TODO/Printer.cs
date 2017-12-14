@@ -13,14 +13,18 @@ namespace TODO
         public void PrintUsage()
         {
             Console.WriteLine();
-            Console.WriteLine("Command Line Todo application");
-            Console.WriteLine("=============================");
-            Console.WriteLine();
-            Console.WriteLine("Command line arguments:");
-            Console.WriteLine(" -l\tLists all the tasks");
-            Console.WriteLine(" -a\tAdds a new task");
-            Console.WriteLine(" -r\tRemoves an task");
-            Console.WriteLine(" -c\tCompletes an task");
+            Console.WriteLine
+                (
+                    "\r\n" +
+                    "Command Line Todo application\n" +
+                    "=============================" +
+                    "\r\n" +
+                    "Command line arguments:\n" +
+                    " -l\tLists all the tasks\n" +
+                    " -a\tAdds a new task\n" +
+                    " -r\tRemoves an task\n" +
+                    " -c\tCompletes an task"
+                );
         }
         public void PrintList()
         {
