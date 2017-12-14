@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
@@ -18,11 +19,22 @@ namespace TODO
 
         public void RemoveTask(int taskIndex)
         {
-            string[] tasks = File.ReadAllLines(Filename);
-            List<string> list = new List<string>(tasks);
-            list.RemoveAt(taskIndex);
-            tasks = list.ToArray();
-            File.WriteAllLines(Filename, tasks);
+            try
+            {
+                string[] tasks = File.ReadAllLines(Filename);
+                List<string> list = new List<string>(tasks);
+                list.RemoveAt(taskIndex);
+                tasks = list.ToArray();
+                File.WriteAllLines(Filename, tasks);
+            }
+            catch (Exception)
+            {
+                string[] tasks = File.ReadAllLines(Filename);
+                if (taskIndex > tasks.Length)
+                {
+                    Console.WriteLine("Unable to remove: index is out of bound");
+                }
+            }
         }
 
         public void CheckTask(int taskIndex)

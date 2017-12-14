@@ -1,3 +1,2 @@
-new task
 new task3
 [x] new task4

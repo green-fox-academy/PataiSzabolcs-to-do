@@ -33,14 +33,32 @@ namespace TODO
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine("Unable to add: no task provided");
+                    if (args.Length < 1)
+                    {
+                        Console.WriteLine("Unable to add: no task provided");
+                    }
                 }
             }
             if (args[0] == "-r")
             {
-                int input = int.Parse(args[1]);
-                FileHandler handler = new FileHandler();
-                handler.RemoveTask(input - 1);
+                try
+                {
+                    int input;
+                    bool result = int.TryParse(args[1], out input);
+                    if(result)
+                    {
+                        FileHandler handler = new FileHandler();
+                        handler.RemoveTask(input - 1);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Unable to remove: index is not a number");
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Unable to remove: no index provided");
+                }
             }
             if (args[0] == "-c")
             {
