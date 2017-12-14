@@ -17,14 +17,13 @@ namespace TODO
         {
             if (args.Length == 0)
             {
-                Console.WriteLine("Command Line Todo application");
-                Console.WriteLine("=============================");
-                Console.WriteLine();
-                Console.WriteLine("Command line arguments:");
-                Console.WriteLine(" -l\tLists all the tasks");
-                Console.WriteLine(" -a\tAdds a new task");
-                Console.WriteLine(" -r\tRemoves an task");
-                Console.WriteLine(" -c\tCompletes an task");
+                Printer printer = new Printer();
+                printer.PrintUsage();
+            }
+            if (args[0] == "-l")
+            {
+                Printer printer = new Printer();
+                printer.PrintList();
             }
         }
     }
