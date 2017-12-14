@@ -36,6 +36,12 @@ namespace TODO
                     Console.WriteLine("Unable to add: no task provided");
                 }
             }
+            if (args[0] == "-r")
+            {
+                int input = int.Parse(args[1]);
+                FileHandler handler = new FileHandler();
+                handler.RemoveTask(input - 1);
+            }
             if (args[0] == "-c")
             {
                 int input = int.Parse(args[1]);

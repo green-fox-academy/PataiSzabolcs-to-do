@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace TODO
@@ -14,6 +15,16 @@ namespace TODO
             writer.Close();
             //File.WriteAllText(Filename, task);
         }
+
+        public void RemoveTask(int taskIndex)
+        {
+            string[] tasks = File.ReadAllLines(Filename);
+            List<string> list = new List<string>(tasks);
+            list.RemoveAt(taskIndex);
+            tasks = list.ToArray();
+            File.WriteAllLines(Filename, tasks);
+        }
+
         public void CheckTask(int taskIndex)
         {            
             string[] tasks = File.ReadAllLines(Filename);
