@@ -26,8 +26,15 @@ namespace TODO
             }
             if (args[0] == "-a")
             {
-                FileHandler handler = new FileHandler();
-                handler.AddTask(args[1]);
+                try
+                {
+                    FileHandler handler = new FileHandler();
+                    handler.AddTask(args[1]);
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Unable to add: no task provided");
+                }
             }
             if (args[0] == "-c")
             {
