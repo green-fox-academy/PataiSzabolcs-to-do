@@ -14,7 +14,6 @@ namespace TODO
             StreamWriter writer = new StreamWriter(Filename, true);
             writer.WriteLine("[ ] " + task);
             writer.Close();
-            //File.WriteAllText(Filename, task);
         }
 
         public void RemoveTask(int taskIndex)
@@ -27,13 +26,9 @@ namespace TODO
                 tasks = list.ToArray();
                 File.WriteAllLines(Filename, tasks);
             }
-            catch (Exception)
-            {
-                //string[] tasks = File.ReadAllLines(Filename);
-                //if (taskIndex > tasks.Length || taskIndex < 0)
-                //{
-                    Console.WriteLine("Unable to remove: index is out of bound");
-                //}
+            catch (IndexOutOfRangeException)
+            {                
+                Console.WriteLine("Unable to remove: index is out of bound");
             }
         }
 
@@ -48,13 +43,9 @@ namespace TODO
                 tasks[taskIndex] = builder.ToString();
                 File.WriteAllLines(Filename, tasks);
             }
-            catch (Exception)
+            catch (IndexOutOfRangeException)
             {
-                string[] tasks = File.ReadAllLines(Filename);
-                if (taskIndex > tasks.Length || taskIndex < 0)
-                {
-                    Console.WriteLine("Unable to remove: index is out of bound");
-                }
+                Console.WriteLine("Unable to remove: index is out of bound");
             }
         }
     }
