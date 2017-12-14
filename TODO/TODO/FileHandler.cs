@@ -29,22 +29,33 @@ namespace TODO
             }
             catch (Exception)
             {
-                string[] tasks = File.ReadAllLines(Filename);
-                if (taskIndex > tasks.Length)
-                {
+                //string[] tasks = File.ReadAllLines(Filename);
+                //if (taskIndex > tasks.Length || taskIndex < 0)
+                //{
                     Console.WriteLine("Unable to remove: index is out of bound");
-                }
+                //}
             }
         }
 
         public void CheckTask(int taskIndex)
-        {            
-            string[] tasks = File.ReadAllLines(Filename);
-            string task = tasks[taskIndex];
-            StringBuilder builder = new StringBuilder(task);
-            builder[task.IndexOf('[') + 1] = 'x';
-            tasks[taskIndex] = builder.ToString();
-            File.WriteAllLines(Filename, tasks);
+        {
+            try
+            {
+                string[] tasks = File.ReadAllLines(Filename);
+                string task = tasks[taskIndex];
+                StringBuilder builder = new StringBuilder(task);
+                builder[task.IndexOf('[') + 1] = 'x';
+                tasks[taskIndex] = builder.ToString();
+                File.WriteAllLines(Filename, tasks);
+            }
+            catch (Exception)
+            {
+                string[] tasks = File.ReadAllLines(Filename);
+                if (taskIndex > tasks.Length || taskIndex < 0)
+                {
+                    Console.WriteLine("Unable to remove: index is out of bound");
+                }
+            }
         }
     }
 }

@@ -19,11 +19,17 @@ namespace TODO
                 Printer printer = new Printer();
                 printer.PrintUsage();
             }
+            else if (args[0] != "-l" && args[0] != "-a" && args[0] != "-r" && args[0] != "-c")
+            {
+                Console.WriteLine("Unsupported argument");
+            }
+
             if (args[0] == "-l")
             {
                 Printer printer = new Printer();
                 printer.PrintList();
             }
+
             if (args[0] == "-a")
             {
                 try
@@ -33,12 +39,10 @@ namespace TODO
                 }
                 catch (Exception)
                 {
-                    if (args.Length < 1)
-                    {
-                        Console.WriteLine("Unable to add: no task provided");
-                    }
+                    Console.WriteLine("Unable to add: no task provided");
                 }
             }
+
             if (args[0] == "-r")
             {
                 try
@@ -60,11 +64,27 @@ namespace TODO
                     Console.WriteLine("Unable to remove: no index provided");
                 }
             }
+
             if (args[0] == "-c")
             {
-                int input = int.Parse(args[1]);
-                FileHandler handler = new FileHandler();
-                handler.CheckTask(input - 1);
+                try
+                {
+                    int input;
+                    bool result = int.TryParse(args[1], out input);
+                    if (result)
+                    {
+                        FileHandler handler = new FileHandler();
+                        handler.CheckTask(input - 1);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Unable to remove: index is not a number");
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Unable to remove: no index provided");
+                }
             }
         }
     }

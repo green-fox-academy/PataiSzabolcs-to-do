@@ -1,2 +1,2 @@
-new task3
-[x] new task4
+[x] kutya
+[ ] kutya
