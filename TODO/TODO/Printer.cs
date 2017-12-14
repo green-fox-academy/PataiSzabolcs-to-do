@@ -29,9 +29,16 @@ namespace TODO
         public void PrintList()
         {
             string[] list = File.ReadAllLines(Filename);
-            foreach (string item in list)
+            if (list.Length == 0)
             {
-                Console.WriteLine($"{Array.IndexOf(list, item) + 1} - {item}");
+                Console.WriteLine($"No todos for today! :)");
+            }
+            else
+            {
+                foreach (string item in list)
+                {
+                    Console.WriteLine($"{Array.IndexOf(list, item) + 1} - {item}");
+                }
             }
         }
     }
