@@ -12,7 +12,6 @@ namespace TODO
         {
             RunApplication(args);
         }
-        // remove static?
         public static void RunApplication(string[] args)
         {
             if (args.Length == 0)
@@ -24,6 +23,11 @@ namespace TODO
             {
                 Printer printer = new Printer();
                 printer.PrintList();
+            }
+            if (args[0] == "-a")
+            {
+                FileHandler handler = new FileHandler();
+                handler.AddTask(args[1]);
             }
         }
     }
